@@ -54,14 +54,13 @@ def prepare_training_register(x1, x2, w1=0.5, w2=0.5):
     """
     # TODO: implement the four steps above.
     #
-    # qc = QuantumCircuit(3)
-    # alpha = 2 * np.arccos(np.sqrt(w1))
-    # qc.ry(alpha, 0)
-    # qc.initialize(x1, [1])
-    # qc.cz(0, 1)
-    # qc.cx(0, 2)
-    # return qc
-    raise NotImplementedError
+    qc = QuantumCircuit(3)
+    alpha = 2 * np.arccos(np.sqrt(w1))
+    qc.ry(alpha, 0)
+    qc.initialize(x1, [1])
+    qc.cz(0, 1)
+    qc.cx(0, 2)
+    return qc
  
  
 def full_classifier_circuit(test_vec, x1, x2, w1=0.5, w2=0.5):
@@ -77,15 +76,14 @@ def full_classifier_circuit(test_vec, x1, x2, w1=0.5, w2=0.5):
     """
     # TODO: combine prepare_training_register with the swap-test sandwich.
     #
-    # qc = QuantumCircuit(5)
-    # qc.initialize(test_vec, [1])
-    # training_reg = prepare_training_register(x1, x2, w1, w2)
-    # qc.compose(training_reg, qubits=[4, 2, 3], inplace=True)
-    # qc.h(0)
-    # qc.cswap(0, 1, 2)
-    # qc.h(0)
-    # return qc
-    raise NotImplementedError
+    qc = QuantumCircuit(5)
+    qc.initialize(test_vec, [1])
+    training_reg = prepare_training_register(x1, x2, w1, w2)
+    qc.compose(training_reg, qubits=[4, 2, 3], inplace=True)
+    qc.h(0)
+    qc.cswap(0, 1, 2)
+    qc.h(0)
+    return qc
  
  
 def expectation_value_from_circuit(theta, w1=0.5, w2=0.5):
