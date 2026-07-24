@@ -3,3 +3,12 @@ __pycache__/
 .ipynb_checkpoints/
 *.pyc
 .env
+Lectures/qnn_classification.ipynb
+
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
